@@ -1,0 +1,211 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\setlist{parsep=0pt,listparindent=\parindent}
+\usepackage[mathscr]{euscript}
+\let\euscr\mathscr \let\mathscr\relax% just so we can load this and rsfs
+\usepackage[scr]{rsfso}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+\usepackage{pgfplots}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+	
+	\title{\Large Homework \#8 MATH270}
+	\author{Luke Tollefson}
+	\date{Wednesday, April 10th}
+	
+	\maketitle
+	\begin{enumerate}
+		\item For function $f:\mathbb{R}\to\mathbb{R}$ defined by $f(x)=2x^2$, find
+		
+		\begin{enumerate}
+			\item $f((0,1))=(0,2)$
+			\item $f((-1,3))=(0,18)$
+			\item $f^{-1}((-2,1))=(-\sqrt{1/2},\sqrt{1/2})$
+			\item $f^{-1}((0,2))=(-1,1)$
+			\item \[f^{-1}((a,b))=
+			\begin{cases}
+				(-\sqrt{\frac{b}{2}},-\sqrt{\frac{a}{2}})\cup (\sqrt{\frac{a}{2}},\sqrt{\frac{b}{2}})\qquad &a,b>0 \\
+				(-\sqrt{\frac{b}{2}},\sqrt{\frac{b}{2}})\qquad &a\leq0,b>0\\
+				\emptyset\qquad &a,b<0\\
+			\end{cases}
+			\]
+			
+			\noindent (Here $(a,b)$ is the set defined by $(a,b)=\{x\in\mathbb{R}:a<x<b \}$)
+		\end{enumerate}
+	
+		\item Let $f:\mathbb{R}\to\mathbb{R}$ be defined by $f(x)=x^4+1$.
+		
+		\begin{enumerate}
+			\item Make a graph of $f$.
+			
+			\begin{tikzpicture}% function
+			\begin{axis}[xlabel=$x$,ylabel=$f(x)$,axis x line=center,axis y line=center,domain=-2:2,xmin=-2,xmax=2,ymin=-.5,ymax=18,title=$x^4+1$,height=8cm,width=7cm,smooth]
+			\addplot [mark=none]{x^4+1};
+			\end{axis}
+			\end{tikzpicture}
+			
+			\newpage
+			
+			\item Using your graph, show how you can guess $f([0,2])$.
+			
+			\begin{tikzpicture}% function
+			\begin{axis}[xlabel=$x$,ylabel=$f(x)$,axis x line=center,axis y line=center,domain=-2:2,xmin=-2,xmax=2,ymin=-.5,ymax=18,title=$x^4+1$,height=8cm,width=7cm,smooth]
+			\addplot [mark=none]{x^4+1};
+			\end{axis}
+			\end{tikzpicture}
+			
+			$f([0,2])=[1,17]$
+			
+			\item Prove that your guess for $f([0,2])$ is correct.
+			
+			\begin{proof}
+				First we will prove that $f([0,2])\subseteq [1,17]$. Let $y\in f([0,2])$, then $y\in\{f(x): 0\leq x\leq 2 \}$. Hence $y\in\{x^4+1:0\leq x\leq 2 \}$, $y=x^4+1$, where $x\leq x\leq 2$. The minimum of $y$ is when $x=0$, and the maximum is when $x=2$. Therefore the range is $y\in[f(0),f(2)]$, or $y\in[1,17]$.
+				
+				Now we will show $[1,17]\subseteq f([0,2])$. Let $y\in[1,17]$. If we define $x=\sqrt[4]{y-1}$. The smallest $x$ is when $y=1$, and the largest is when $y=2$. When $y=1$, $x=0$; when $y=17$, $x=2$. Hence the interval for $x$ is $[0,2]$ and $y\in f([0,2])$.
+				
+				Since containment was shown in both directions, equality is proven.
+			\end{proof}
+			
+			\newpage
+			
+			\item Use your graph to find $f^{-1}([2,17])$.
+			
+			\begin{tikzpicture}% function
+			\begin{axis}[xlabel=$x$,ylabel=$f(x)$,axis x line=center,axis y line=center,domain=-2:2,xmin=-2,xmax=2,ymin=-.5,ymax=18,title=$x^4+1$,height=8cm,width=7cm,smooth]
+			\addplot [mark=none]{x^4+1};
+			\end{axis}
+			\end{tikzpicture}
+			
+			$f^{-1}([2,17])=[-2,-1]\cup [1,2]$
+			
+			\item Prove that your guess for $f^{-1}([2,17])$.
+			
+			\begin{proof}
+				First we will prove that $f^{-1}([2,17])\subseteq[-2,-1]\cup [1,2]$. Let $y\in f^{-1}([2,17])$. Hence $y\in\{x\in\mathbb{R}:f(x)\in[2,17] \}$. Hence $y\in\{x : x^4+1\in[2,17] \}$. There are two valid intervals, one less than zero, one greater than zero. For the interval less than zero, the smallest $x$ is $-2$ and the largest is $-1$. For the interval greater than zero, the smallest $x$ is $1$ and the largest is $2$. Hence $y\in [-2,-1]\cup [1,2]$.
+				
+				Next we will prove that $[-2,-1]\cup [1,2]\subseteq f^{-1}([2,17])$. Let $x\in [-2,-1]\cup [1,2]$. Let $y=x^4+1$, then the range of $y$ is $[2,17]$. Hence $x\in f^{-1}([2,17])$.
+				
+				Since containment was proved in both directions, equality is shown.
+			\end{proof}
+			
+		\end{enumerate}
+			
+			\item Let $f:X\to Y$. Show that in general
+			\[
+			f(X\setminus A)\neq Y\setminus f(A),\qquad A\subseteq X
+			\].
+			
+			\begin{enumerate}
+				\item If $f$ is one-to-one, then $f(X\setminus A)\subseteq Y\setminus f(A)$.
+				
+				\begin{proof}
+					Let $y\in f(X\setminus A)$. Then $y=f(a)$, where $a\in X\setminus A$. Hence $y\in Y$. Since $f$ is one-to-one and $a\notin A$, then $f(a)\notin Y$. Thus $y\notin Y$, and $y\in Y\setminus f(A)$.
+				\end{proof}
+				
+				\item If $f$ is onto, then $Y\setminus f(A)\subseteq f(X\setminus A)$.
+				
+				\begin{proof}
+					Let $y\in Y\setminus f(A)$, then $y\in Y$ and $y\notin f(A)$. Hence $y\neq f(a)$ where $a\in A$. Since $f$ is onto, then $\text{ran}(f)=Y$, hence $y\in \text{ran}(f)$. Thus $y=f(x)$, where $x\in X\setminus A$. So $y\in f(X\setminus A)$.
+				\end{proof}
+			
+				\item If $f$ is a bijection, then $f(X\setminus A)= Y\setminus f(A)$.
+				
+				\begin{proof}
+					By a and b, $f$ is a bijection, then containment in both directions is proved.
+				\end{proof}
+			\end{enumerate}
+		
+		\newpage
+		
+		\item Show that for $f:\mathbb{R}\to\mathbb{R}$, $A, B\subseteq Y$
+		\[
+		f^{-1}(A\cap B)=f^{-1}(A)\cap f^{-1}(B)
+		\]
+			
+		\begin{proof}
+			First we will prove that $f^{-1}(A\cap B)\subseteq f^{-1}(A)\cap f^{-1}(B)$, then $f^{-1}(A)\cap f^{-1}(B)\subseteq f^{-1}(A\cap B)$.
+			
+			Let $x\in f^{-1}(A\cap B)$. Then $x\in \{a\in\mathbb{R}:f(a)\in A\cap B \}$. Hence, $x=a$ where $f(a)\in A\cap B$. In other words, $f(a)\in A$ and $f(a)\in B$. Thus $x\in f^{-1}(A)$ and $x\in f^{-1}(B)$, hence $x\in f^{-1}(A)\cap f^{-1}(B)$.
+			
+			Now let $x\in f^{-1}(A)\cap f^{-1}(B)$. Thus $x\in f^{-1}(A)$ and $x\in f^{-1}(B)$. Then $x\in \{a\in\mathbb{R}:f(a)\in A \}$ and $x\in \{b\in\mathbb{R}:f(b)\in B \}$. Therefore $x\in \{a\in\mathbb{R}:f(a)\in A\cap B \}$. Hence $x\in f^{-1}(A\cap B)$.
+			
+			Since containment was proved in both directions, hence equivalence is proven.
+		\end{proof}
+		
+		\newpage
+			
+		\item Prove using mathematical induction that
+		\[
+		1+2+\dotsm+n=\frac{n(n+1)}{2}
+		\]
+		
+		\begin{proof}
+			First we check the base step: $P(1)$ is the statement that $1=1(1+1)/2$.
+			
+			Now we check the induction step. Let $n\in\mathbb{Z}^+$ and suppose $P(n)$. Thus we suppose that for an $n\in\mathbb{Z}^+$ we have
+			
+			\[
+			1+2+\dotsm+n=\frac{n(n+1)}{2}
+			\].
+			
+			We wish to show that $P(n+1)$ holds
+			
+			\[
+			1+2+\dotsm+(n+1)=\frac{(n+1)((n+1)+1)}{2}
+			\]
+			
+			Grouping the left side of $P(n+1)$ and then
+			\begin{align*}
+			&1+2+\dotsm+n+(n+1)\\
+			=&(1+2+\dotsm+n)+(n+1)\\
+			=&\frac{n(n+1)}{2}+(n+1)\\
+			=&\frac{n(n+1)}{2}+(n+1)\\
+			=&\frac{n(n+1)+2(n+1)}{2}\\
+			=&\frac{n^2+n+2n+2}{2}\\
+			=&\frac{n^2+3n+2}{2}\\
+			=&\frac{(n+1)(n+2)}{2}\\
+			=&\frac{(n+1)((n+1)+1)}{2}
+			\end{align*}
+			
+			By mathematical induction we conclude that assertion holds for all positive integers.
+		\end{proof}
+		
+		\newpage
+		
+		\item Prove using mathematical induction that $2^n\leq n!$ for all integers with $n\geq 5$.
+		
+		\begin{proof}
+			Using the definition of factional and exponentiation.
+			\[
+			2*2*2*2*2*\dotsm\leq 1*2*3*4*5*\dotsm
+			\]
+			Checking the base step: $2^5\leq 5!$, implies $32\leq 120$, which is true.
+			
+			Now we verify the induction stop when $n\geq 5$. Suppose the following is true
+			
+			\[
+			2*2*\dotsm*2\leq 1*2*\dotsm*n
+			\]
+			
+			Now we will see if the following holds
+			
+			\[
+			2*2*\dotsm*2*2 \text{ (the nth two)}\leq 1*2*\dotsm*n*(n+1)
+			\]
+			
+			Grouping together
+			
+			\[
+			(2*2*\dotsm*2)*2 \text{ (the nth two)}\leq 1*2*\dotsm*n)*(n+1)
+			\]
+			
+			We know the left group is less than the right group, we also know $2\leq (n+1)$ when $n\geq 5$. Hence the left product is less than the right product and the assertion holds.
+			
+		\end{proof}
+		
+		\end{enumerate}
+	
+\end{document}

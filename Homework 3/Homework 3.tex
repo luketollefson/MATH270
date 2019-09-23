@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\newtheorem{theorem1}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem1]
+
+\begin{document}
+	
+	\title{\Large Homework \#3 MATH270}
+	\author{Luke Tollefson}
+	\date{Wednesday, February 8th}
+	
+	\maketitle
+	\begin{enumerate}
+		\item Prove that if $n$ is an integer, 
+		then $4n^2+4n+8$ is an even integer. 
+		What method of proof did you use?
+		\begin{proof}
+		We will prove this directly. By definition, if an integer $n$ is even, then $n=2m,m\in {\mathbb{Z}}$. Since $4n^2+4n+8=2(2n^2+2n+4)$, then by definition $4n^2+4n+8$ is an even integer.
+		\end{proof}
+	
+		\item Complete the proof for the theorem:
+		\begin{theorem1}
+			Let $x$ and $y$ be real numbers. If $xy>1/2$ then $x^2+y^2>1$.
+		\end{theorem1}
+		\begin{proof}
+			The proof will proceed by considering the contrapositive. So suppose $x^2+y^2\leq 1$. Now we know that $(x^2-y^2)\geq 0$ (this is always true).
+			\begin{align*}
+			1&\leq (x-y)^2+1\\
+			x^2+y^2&\leq (x-y)^2+1\\
+			x^2+y^2&\leq x^2-2xy+y^2+1\\
+			0&\leq -2xy+1\\
+			2xy&\leq 1\\
+			xy&\leq \frac{1}{2}
+			\end{align*}
+			This shows the contrapositive is true. So then the theorem is true.
+		\end{proof}
+		\newpage
+		\item Prove that $\sqrt{3}$ is not rational. Before we prove that, we will prove that if $n^2$ is divisible by $3$, then $n$ is divisible by $3$.
+		\begin{proof}
+			We will prove that if $3\mid n^2$, then $3\mid n$ by proving the contrapositive. If $3\nmid n$, then by definition there is not integer $m$ such that $n=3m$. Then there should also be no $m$ such that $n^2=3(3m^2)$, which means $3\nmid n^2$.
+		\end{proof}
+		\begin{proof}
+			We will prove this by contradiction. Assume $\sqrt{3}$ is rational. Then $\frac{p}{q}=\sqrt{3}$, $p,q\in \mathbb{Z}$ where $p$ and $q$ are coprime. Squaring both sides yields $\frac{p^2}{q^2}=3$. So $p^2=3q^2$. By the previous proof, since $3\mid p^2$, then $3\mid p$. So $p=3m$, then $p^2=9m^2=3q^2$, or $q^2=3m^2$. Since $3\mid q^2$, then $3\mid q$. Now we have shown that $3$ divides both $p$ and $q$, showing they have a common factor of $3$, contradicting the assumption that they were coprime.\\
+			This contradiction proves that $\sqrt{3}$ must not be rational.
+		\end{proof}
+	
+		\item Let $x$ be a real number.\\
+			(a) Prove $-|x|\leq x\leq |x|$*
+			\begin{proof}
+				We will prove this by looking at each possible case. The definition of the absolute value function
+				\[ |x| = \left\{
+				\begin{array}{rl}
+				x, & \  x \geq 0 \\
+				-x, & \  x < 0
+				\end{array}\right.
+				\]
+				there are two cases, $x\geq 0$ and $x<0$.\\
+				Case: If $x\geq 0$, then $|x|=x$. Substituting for $|x|$ into (*) yields $-x\leq x\leq x$, which is true.\\
+				Case: If $x<0$, then $|x|=-x$. Substituting for $|x|$ into (*) yields $x\leq x\leq -x$. This is true. The largest term is positive, where as the two left ones are negative.
+			\end{proof}
+		
+			(b) Let $a\geq 0$. Prove $|x|\leq a$ if and only if $-a\leq x\leq a$.
+			\begin{proof}
+				First we will prove that if $|x|\leq a$, then $-a\leq x\leq a$ by cases.\\
+				Case: If $x\geq 0$, then $x\leq a$, which means $-a\leq 0\leq x\leq a$. And that is true.\\
+				Case: If $x<0$, then $-x\leq a\implies x\geq -a$, then $-a\leq x< 0<a$\\
+				Next we will prove that if $-a\leq x\leq a$, then $|x|\leq a$, again by cases.\\
+				Case: $-a<0\leq x\leq a$. In this case $x$ is positive, so $|x|=x$, therefore $|x|\leq a$.\\
+				Case: $-a\leq x<0<a\implies -a\leq x\implies -x\leq a$. Since $x<0$, then $|x|=-x$, therefore $|x|\leq a$.
+			\end{proof}
+		\newpage
+			(c) Prove the following.
+			\begin{theorem1}
+				Let $x$ and $y$ be real numbers. Then
+				$|x+y|\leq|x|+|y|$
+			\end{theorem1}
+			\begin{proof}
+				\begin{align*}
+					-|x|&\leq x\leq |x|\\
+					-|y|&\leq y\leq |y|
+				\end{align*}
+				Summing these two formulas yields
+				\[
+					-(|x|+|y|)\leq x+y\leq |x|+|y|
+				\]
+				Implying
+				\[
+					|x+y|\leq ||x|+|y||
+				\]
+				$|x|+|y|$ is always positive, so $||x|+|y||=|x|+|y|$, therefore proving
+				\[
+					|x+y|\leq |x|+|y|
+				\]
+			\end{proof}
+			
+			(d) Prove the following corollary to Theorem 2.
+			\begin{corollary}
+				For any $x,y\in \mathbb{R}$, $||x|-|y||\leq |x-y|$.
+			\end{corollary}
+			\begin{proof}
+				\begin{align}
+					|x|&=|x-y+y|\nonumber \\
+					|x-y+y|&\leq |x-y+y|\nonumber \\
+					|x-y+y|&\leq |x-y|+|y|\nonumber \\
+					|x-y+y|-|y|&\leq |x-y|\nonumber \\
+					|x|-|y|&\leq |x-y|
+				\end{align}
+				Proving a second result
+				\begin{align}
+					x&\leq |x|\nonumber\\
+					y&\leq |y|\nonumber\\
+					x-y&\leq |x|-|y|\nonumber\\
+					-|x-y|&\leq x-y\qquad \text{by 4a}\nonumber\\
+					-|x-y|&\leq |x|-|y|
+				\end{align}
+				 Combining (1) and (2) gives
+				 \[
+				 	-|x-y|\leq |x|-|y|\leq |x-y|
+				 \]
+				 Using the result from 4b
+				 \[
+				 	||x|-|y||\leq |x-y|
+				 \]
+			\end{proof}
+	
+
+	\end{enumerate}
+
+	
+\end{document}

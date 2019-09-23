@@ -1,0 +1,116 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\setlist{parsep=0pt,listparindent=\parindent}
+\usepackage[mathscr]{euscript}
+\let\euscr\mathscr \let\mathscr\relax% just so we can load this and rsfs
+\usepackage[scr]{rsfso}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+\usepackage{pgfplots}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+	
+	\title{\Large Homework \#8 MATH270}
+	\author{Luke Tollefson}
+	\date{Wednesday, April 3rd}
+	
+	\maketitle
+	\begin{enumerate}
+		\item Functions $f:A\to B$ are given below. For each of them find the range of $f$. Further, if possible, find $f^{-1}:B\to A$. Rigorous proofs are not required, but provide explanations.
+		
+		\begin{enumerate}
+			\item $f:\mathbb{R}\setminus\{0\}\to\mathbb{R}, f(x)=1/x$
+			
+			The range is $\mathbb{R}\setminus\{0 \}$, one can always find an $x$ for any arbitrary $f(x)$ using the equation $x=1/f(x)$. The exception is you can't find an $x$ for when $f(x)=0$, hence the range is $\mathbb{R}\setminus\{0\}$.
+			
+			The inverse of $f$ is $f^{-1}(y)=1/y$. However, it is not a perfect inverse because its domain is $\mathbb{R}\setminus\{0\}$, not $\mathbb{R}$.	An inverse whose domain is $\mathbb{R}$ would be impossible.
+			
+			\item $f:\mathbb{R}^2\to\mathbb{R},f(x,y)=x+y$
+			
+			The range is $\mathbb{R}$ as you can write any real number as a sum of $0$ and the same real number. 
+			
+			There is no inverse because there are infinity many ways to write a real number as a sum of two real numbers.
+			
+			\item $f:\mathbb{R}^2\to\mathbb{R}^2,f(x,y)=(y,x)$
+			
+			The range is $\mathbb{R}^2$ because any point $(a,b)$ in the Cartesian plane can be written as $f(b,a)$.
+			
+			The inverse of $f$ would be $f^{-1}(y,x)=(x,y)$. It is the same as $f$.
+			
+			\item $f:\mathbb{R}\to\mathbb{R},f(x)=\sin{x}$
+			
+			The range of $f$ is $[-1,1]$. Looking at a plot of the function:
+			
+			\begin{tikzpicture}% function
+			\begin{axis}[xlabel=$x$,ylabel=$f(x)$,axis x line=center,axis y line=center,domain=-6.28:6.28,xtick=\empty,xmin=-6.28,xmax=6.28,ymin=-1.2,ymax=1.2,title=$\sin{x}$,height=4.4cm,width=12.56cm,smooth]
+			\addplot [mark=none]{sin(deg(x))};
+			\end{axis}
+			\end{tikzpicture}
+			
+			We see that $\sin{x}$ varies between $-1$ and $1$.
+			
+			The inverse $\sin^{-1}{x}$ would be whatever function that makes $\sin^{-1}{(\sin{x})}=x$. The domain of this inverse could only be valid over $[-1,1]$.
+			
+			\newpage
+			
+			\item $f:\{x\in\mathbb{R}:-\pi/2<x<\pi/2 \}\to\mathbb{R},f(x)=\tan{x}$
+			
+			The range of $f$ is $\mathbb{R}$. This is because as $x$ approaches $-\pi/2$ from the right $f(x)$ approaches $-\infty$. And as $x$ approaches $\pi/2$ from the left $f(x)$ approaches $\infty$.
+			
+			There is an inverse of $f(x)$, it is called $\tan^{-1}{x}$, or more sanely notated, $\arctan{x}$. 
+		\end{enumerate}
+	
+	\item Consider the function $f:\mathbb{R}^2\to\mathbb{R}^2$ defined by $f(x,y)=(x,x+y)$. Show that $f$ has an inverse and the inverse function.
+	
+	First we will prove that $f$ is a bijection.
+	\nolinebreak
+	\begin{proof}
+		We will first prove $f$ is one-to-one. Let $(x_1,x_2),(y_1,y_2)\in\mathbb{R}^2$. If $f(x_1)=f(x_2)$, then $(x_1,x_1+x_2)=(y_1,y_1+y_2)$. Hence $x_1=y_1$, and $x_1+x_2=y_1+y_2$. Subtracting $x_1$ and $y_1$ from the last equation yields $x_2=y_2$. Hence $f$ is one-to-one.
+		
+		Now we will show $f$ is onto. Let $(y_1,y_2)\in\mathbb{R}^2$ and let $(x_1,x_2)=(y_1,y_1-y_2)$. Then $(x_1,x_2)\in\mathbb{R}^2$, and $f((x_1,x_2))=(y_1,y_1-y_2+y_1)=(y_1,y_2)$. This shows $f$ is onto.
+	\end{proof}
+
+	The inverse of $f$ is $f^{-1}(x,y)=(x,x-y)$. It follows $f^{-1}(f((x,y)))=f^{-1}((x,x+y))=(x,y)$ and $f(f^{-1}((x,y)))=f(x,x-y)=(x,y)$.
+	
+	\item Prove the following theorem.
+	
+	\begin{theorem}
+		If $f:A\to B$, then the following are equivalent.
+		\begin{enumerate}
+			\item $f$ is a bijection.
+			\item $f$ has an inverse.
+			\item There is $h:B\to A$ such that $h\circ f=i_A$ and $f\circ h=i_B$.
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{proof}
+		Theorem 16.4 tells us that $(a)\implies(b)$ and $(a)\implies(c)$. Theorem 16.8 tells us $(c)\implies(b)$. Now if we prove $(b)\implies(a)$ equivalence is shown.
+		
+		Suppose $f$ has an inverse $f^{-1}:B\to A$ such that $f^{-1}\circ f=i_A$ and $f\circ f^{-1}=i_B$. 
+		
+		If $f(x_1)=f(x_2)$, then $f^{-1}(f(x_1))=f^{-1}(f(x_2))$. Hence $i_A(x_1)=i_A(x_2)$. Therefore $x_1=x_2$. Showing $f$ is one-to-one.
+		
+		Now we will show $f$ is onto. Let $y\in B$ and set $x=f^{-1}(y)$. Then $x\in A$, and $f(x)=f(f^{-1}(y))=y$. Lemma 15.1 implies that $f$ is onto.
+		
+		Since $f$ was shown to be one-to-one and onto, it a bijection.
+		
+		All the implications that needed to shown were.
+	\end{proof}
+	
+	\newpage
+	
+	\item Give an example of sets $A$ and $B$, and functions $f:A\to B$ and $g:B\to A$ such that $f\circ g=i_B$, but $g\circ f\not=i_A$ (thus the existence of a function $g$ such that $f\circ g=i_b$ is not enough to conclude that $f$ has an inverse). Give another example, such that $g\circ f=i_A$ but $f\circ g\not=i_B$.
+	
+	\newpage
+	
+	\item Prove that $(f^{-1})^{-1}=f$.
+	
+	\begin{proof}
+		By definition of the inverse of a function, $(f^{-1})^{-1}(x)=y$ if and only if $f^{-1}(y)=x$. Also, by the same definition, $f^{-1}(y)=x$ if and only if $f(x)=y$. Since for all $x$ $(f^{-1})^{-1}(x)=f(x)=y$, then $(f^{-1})^{-1}=f$.
+	\end{proof}
+	
+	\end{enumerate}
+
+\end{document}

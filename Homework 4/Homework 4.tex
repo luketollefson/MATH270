@@ -1,0 +1,107 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\setlist{parsep=0pt,listparindent=\parindent}
+
+\newtheorem{define}{Definition}
+
+%\setlist{parsep=0pt,listparindent=\parindent}
+
+\begin{document}
+	\title{\Large Homework \#4 MATH270}
+	\author{Luke Tollefson}
+	\date{Wednesday, February 20th}
+	
+	\maketitle
+	
+	\begin{enumerate}
+		\item Given
+		\begin{align*}
+			A&=\{(x,y)\in \mathbb{R}^2 : xy>0\},\\
+			B&=\{(x,y)\in \mathbb{R}^2 : y>|x|\},\\
+			C&=\{(x,y)\in \mathbb{R}^2 : 0<x<y\}.
+		\end{align*}
+		Prove that $A\cap B=C$.	
+	
+		\begin{proof}
+			If $p\in A\cap B$, then $p\in A$ and $p\in B$. Thus $p=(x,y)$ where $xy>0$ and $y>|x|$. Since $y>0$ by $y>|x|$, $x>0$ too in order to satisfy the inequality $xy>0$. Now notice that $-y<x<y$. Put these results together shows that $0<x<y$. We can now conclude that $p\in C$, so $A\cap B\subseteq C$
+			
+			To complete the proof we must show that $C\subseteq A\cap B$. So if $p\in C$, then $p=(x,y)$ where $0<x<y$. Since both $x$ and $y$ are positive $xy>0$. So $p\in A$. Also $-y<0<x<y$ which implies $y>|x|$. So $p\in B$. Thus $p\in A\cap B$ and $C\subseteq A\cap B$
+			
+			Since containment was proved in both directions, we can conclude the two sets are equal.
+		\end{proof}
+	
+		\item Given
+		\begin{align*}
+			A&=\{(x,y)\in \mathbb{R}^2 : x^2+y^2\leq 1\},\\
+			B&=\{(x,y)\in \mathbb{R}^2 : |x|+|y|\leq 1\}.
+		\end{align*}
+		Is $A\subset B$, $B\subset A$, $A\subseteq B$, or $B\subseteq A$?\\
+		
+		\noindent We can show $B\subseteq A$ and $B\subset A$.
+		\begin{proof}
+			If $p\in B$, then $p=(x,y)$ where $|x|+|y|\leq 1$. If we square both sides we find $(|x|+|y|)^2\leq 1^2$, $x^2+y^2+2|x||y|\leq 1$, $x^2+y^2\leq 1-2|x||y|\leq 1$. This shows $p\in A$, so $B\subseteq A$.
+			
+			To show $B\subset A$ we see that $A\not\subseteq B$. The point $q=(\sqrt{\frac{1}{2}},\sqrt{\frac{1}{2}})\sim (0.7,0.7)$ is in $A$, but not in $B$.
+			
+			Therefore, $A\not\subset B$, $B\subset A$, $A\not\subseteq B$, and $B\subseteq A$.
+		\end{proof}
+	
+		\newpage
+		
+		\item Given the following definition, do the following.
+		\begin{define}
+			The symmetric difference of two sets $A$ and $B$ is the set $A\triangle B$ defined by \[A\triangle B=(A\setminus B)\cup (B\setminus A).\]
+		\end{define}
+	
+		(a) Draw a Venn diagram for the symmetric difference.\\ \\ \\ \\ \\ \\
+			
+		(b) Prove that \[A\triangle B=(A\cup B)\setminus(A\cap B). \]
+			
+		\begin{proof}
+			Let $x\in A\triangle B$, then $x\in (A\setminus B) \cup (B\setminus A)$. So $x\in A\setminus B$ or $x\in B\setminus A$. Suppose $x\in A$ and $x\not\in B$, then $x\in A\cup B$ and $x\not\in A\cap B$. So $x\in (A\cup B)\setminus (A\cap B)$. Similarly, now suppose $x\in B$ and $x\not\in A$, then $x\in A\cup B$ and $x\not\in A\cap B$. So $x\in (A\cup B)\setminus (A\cap B)$. Thus we can conclude $A\triangle B \subseteq (A\setminus B) \cup (B\setminus A)$.
+			
+			Now we need to show $(A\cup B)\setminus(A\cap B) \subseteq A\triangle B$. If $x\in(A\cup B)\setminus(A\cap B)$, then $x\in A\cup B$ and $x\not\in A\cap B$. Suppose $x\in A$ and $x\not\in B$, then $x\in A\setminus B$ and therefore $x\in (A\setminus B)\cup(B\setminus A)$ which means $x\in A\triangle B$. Similarly, now suppose $x\in B$ and $x\not\in A$, then $x\in B\setminus A$ and therefore $x\in(A\setminus B)\cup(B\setminus A)$ which means $x\in A\triangle B$. So $(A\cup B)\setminus(A\cap B) \subseteq A\triangle B$.
+			
+			Since containment in both directions was proved, then we may conclude that the two sets are equal.
+		\end{proof}
+	
+		(c \#1) Prove that $A\triangle A=\emptyset$.
+		\begin{proof}
+			Suppose there is an $x\in A\triangle A$, then $x\in (A\setminus A) \cup (A\setminus A)$. This would require $x$ to simultaneously be an element and not an element of $A$, which is impossible, so $x\in \emptyset$. Thus $A\triangle A=\emptyset$.
+		\end{proof}
+	
+		(c \#2) Prove that $A\triangle \emptyset =A$.
+		\begin{proof}
+			Let $x\in A\triangle \emptyset$, then $x\in (A\setminus \emptyset)\cup(\emptyset\setminus A)$. Since $x\in A\setminus\emptyset$, $x\in A$, so $A\triangle\emptyset\subseteq A$.
+			Now let $x\in A$. Therefore $x\in A\setminus\emptyset$, and $x\in (A\setminus\emptyset)\cup(\emptyset\setminus A)$. So $A\subseteq A\triangle\emptyset$.
+			Together we have proven that $A\triangle \emptyset =A$.
+		\end{proof}
+	
+		\newpage
+	
+		(d) Prove that for sets $A$, $B$, we have $A\triangle B=A\setminus B$ if and only if $B\subseteq A$.
+		\begin{proof}
+			First we will prove that if $A\triangle B=A\setminus B$, then $B\subseteq A$. Let $x\in B$. Considering $(A\setminus B)\cup (B\setminus A)=A\setminus B$, the only way for this equality to work is if  $B\setminus A =\emptyset$. If $B\setminus A=\emptyset$, that means all elements in $B$ are a part of $A$. Hence $x\in A$ and $B\subseteq A$.
+			
+			Now we'll prove that if $B\subseteq A$, then $A\triangle B=A\setminus B$. Let $x\in A\triangle B$, so $x\in (A\setminus B)\cup(B\setminus A)$. Since $B\subseteq A$, $B\setminus A=\emptyset$. Thus $x\in A\setminus B$, therefore $A\triangle B\subseteq A\setminus B$. Now let $x\in A\setminus B$, then $x\in (A\setminus B)\cup(B\setminus A)$. Hence $x\in A\triangle B$, and $A\setminus B\subseteq A\triangle B$.
+			
+			Both directions of implication were proved, thus proving equivalence.
+		\end{proof}
+		
+		\item Prove that the union of two sets can always be written as a union of disjoint sets. (Show that the sets $A\setminus B$ and $B$ are disjoint and that $A\cup B=(A\setminus B)\cup B$).
+		
+		\begin{proof}
+			The sets $A\setminus B$ and $B$ are disjoint. An element cannot be both in $B$ and a set that excludes all elements of $B$.
+			
+			We can show $A\cup B=(A\setminus B)\cup B$. To prove this first we'll prove $A\cup B\subseteq (A\setminus B)\cup B$, then that $(A\setminus B)\cup B\subseteq A\cup B$.
+			
+			Let $x\in A\cup B$. If $x\in A$ and $x\not\in B$, then $x\in A\setminus B$ and $x\in (A\setminus B)\cup B$. Otherwise, if $x\in B$ (regardless if $x\in A$), then $x\in (A\setminus B)\cup B$. So $x\in (A\setminus B)\cup B$.
+			
+			Now let $x\in (A\setminus B)\cup B$. So $x\in A\setminus B$ or $x\in B$. If $x\in A\setminus B$, then $x\in A$. Therefore $x\in A\cup B$. Otherwise, if $x\in B$, then $x\in A\cup B$.
+			
+			Since containment in both directions was proved, equality is.
+		\end{proof}
+		\end{enumerate}
+\end{document}

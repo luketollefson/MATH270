@@ -1,0 +1,187 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\setlist{parsep=0pt,listparindent=\parindent}
+\usepackage[mathscr]{euscript}
+\let\euscr\mathscr \let\mathscr\relax% just so we can load this and rsfs
+\usepackage[scr]{rsfso}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+
+\begin{document}
+	
+	\title{\Large Homework \#7 MATH270}
+	\author{Luke Tollefson}
+	\date{Wednesday, March 27th}
+	
+	\maketitle
+	
+		\begin{enumerate}
+		\item Are the following functions?
+		
+		(a) $f:\mathbb{R}\to\mathbb{R}=\{(x,y):x^2+y^2=4 \}$
+		
+		\qquad No, if $x>2$, then there is no corresponding $y$.
+		
+		(b) $f:\mathbb{R}\to\mathbb{R}, f(x)=1/(x+1)$
+		
+		\qquad No, $f$ is not defined at $-1\in\mathbb{R}$.
+		
+		(c) $f:\mathbb{R}^2\to\mathbb{R}, f(x,y)=x+y$
+		
+		\qquad Yes.
+		
+		\qquad (i) for all $(x,y)\in\mathbb{R}^2$ there is an element $x+y\in\mathbb{R}$.
+		
+		\qquad (ii) for all $(x,y)\in\mathbb{R}^2$, if $f((x,y))=a$ and $f((x,y))=b$, then $x+y=a$ and 
+		
+		\qquad \ $x+y=b$, hence $a=b$.
+				
+		(d) $f:\mathbb{Q}\to\mathbb{R}$,
+		\[ f(x)=
+		\begin{cases}
+		x+1, &x\in 2\mathbb{Z}\\
+		x-1, &x\in 3\mathbb{Z}\\
+		0, &\text{otherwise}.
+	    \end{cases}
+		\]
+		
+		\qquad No, $(6,7)\in f$ and $(6,5)\in f$. Therefore failing the vertical line test.
+		
+		(e) The domain of $f$ is the set of all circles in the plane $\mathbb{R}^2$, the codomain is $\mathbb{R}$, and 
+		
+		 if $c$ is a circle in the domain, $f(c)$ is the circumference of $c$.
+		 
+		 \qquad Yes.
+		 
+		 \qquad (i) every circle in the domain has a corresponding radius $f(c)$.
+		 
+		 \qquad (ii) for every circle, if $f(a)=b$ and $f(a)=c$, then $b=c$ as the 
+		 
+		 \qquad circumference of the same circle is the same.
+				
+		 \item For $x\in\mathbb{R}$ we define the greatest integer of $x$ by $\lfloor x\rfloor=n$, where $n\in\mathbb{Z}$ and $n\leq x<n+1$. The floor function $f:\mathbb{R}\to\mathbb{Z}$ is defined by $f(x)=\lfloor x\rfloor$.
+		 
+		 (a) Prove that $f$ is a well defined function.
+		 
+		 \begin{proof}
+		 	We must prove two conditions.
+		 	
+		 	(i) for all $x\in\mathbb{R}$, there exists a $m\in\mathbb{Z}$ such that $m\leq x<m+1$. There is always two integers surrounding a real number.
+		 	
+		 	(ii) for all $a\in\mathbb{R}$, if $f(a)=n$ and $f(a)=m$, then $n=\lfloor a\rfloor$ and $m=\lfloor a\rfloor$, so $n=m$.
+		 	
+		 	Since the two conditions of a a function were met, $f$ is a function.
+		 \end{proof}
+	 
+	 	\newpage
+	 
+		(b) Determine the range of $f$.
+		The range is $\mathbb{Z}$.
+		\begin{proof}
+			First we will show $\text{ran}(f)\subseteq\mathbb{Z}$. If $n\in\text{ran}(f)$, then $n\in\mathbb{Z}$.
+			
+			Now we will show $\mathbb{Z}\subseteq\text{ran}(f)$. Let $n\in\mathbb{Z}$. Let $n\leq x<n+1$ where $x\in\mathbb{R}$. Hence $x\in\text{dom}(f)$. Now evaluate $f(x)$ to find $m$ where $m\leq x<nm+1$. Now $m=n$ because in order for $x\in[n,n+1)$ and $x\in[m,m+1)$ they have to be the same integer. Hence $f(x)=n$.
+		\end{proof}
+	
+		(c) Define the function $g:\mathbb{R}\to\mathbb{R}$ as $g(x)=\lfloor x\rfloor+\lfloor -x\rfloor$. Find its range and prove that your answer is correct.
+		The range is $\{-1,0 \}$.
+		
+		\begin{proof}
+			First we will show $\text{ran}(f)\subseteq \{-1,0 \}$. Let $y\in \text{ran}(f)$. Then $y\in\mathbb{Z}$. So $\text{ran}(f)\subseteq\mathbb{Z}$. To show that $y$ is only $-1$ or $0$ we will consider what will happen if $x$ in $f(x)$ is an integer. Then there is a $n$ such that $n\leq x<n+1$ and an $m$ such that $m\leq -x<m+1$. Since $x$ is an integer, $n=x$ and $m=-x$, so adding these together is $0$. Now consider if $x$ is a non-integer real number. Then there is an $n\leq x<n+1$ and $m\leq -x<m+1$. If $x$ is positive, then $n$ will be the first integer less than $x$, and $m$ will be the first integer more negative than $x$. Hence, added together $n+m$ will be $-1$. So $y\in \{-1,0 \}$, and $\text{ran}(f)\subseteq\{-1,0 \}$.
+			
+			Now we will show $\{-1,0 \}\subseteq\text{ran}(f)$. We know $-1\in\text{ran}(f)$ because $f(1.5)=-1$. We also know $0\in\text{ran}(f)$ because $f(0)=0$. Hence $\{-1,0 \}\subseteq\text{ran}(f)$.
+			
+			Since containment was proved in both directions equality is shown.
+		\end{proof}
+	
+		\item For each of the functions below determine whether or not the function is one-to-one and whether or not the function is onto. If the function is not one-to-one, give an explicit example to show what goes wrong. If it is not onto, determine the range.
+		
+		(a) $f:\mathbb{R}\to\mathbb{R}, f(x)=1/(x^2+1)$
+		
+		\qquad The function is not one-to-one because $f(1)=f(-1)=1/2$, but $1\neq -1$.
+		
+		\qquad The function is not onto, the range is $(0,1]$.
+		
+		(b) $f:\mathbb{R}\to\mathbb{R}, f(x)=\sin{x}$
+		
+		\qquad The function is not one-to-one because $f(0)=f(2\pi)=0$, but $0\neq 2\pi$.
+		
+		\qquad The function is not onto, the range is $[-1,1]$.
+		
+		(c) $f:\mathbb{Z}\times\mathbb{Z}\to\mathbb{Z}, f(n,m)=nm$
+		
+		\qquad The function is not one-to-one because $f(1,2)=f(2,1)=2$, but $(1,2)\neq(2,1)$.
+		
+		\qquad The function is onto. If $n=1$, then $f(1,m)=m$, where $m$ can be any integer.
+		
+		(d) $f:\mathbb{R}^2\times\mathbb{R}^2\to\mathbb{R}, f((x,y),(u,v))=xu+yv$
+		
+		\qquad The function is not one-to-one because $f((1,1),(0,0))=f((0,0),(1,1))=0$, 
+		
+		\qquad but $((1,1),(0,0))\neq((0,0),(1,1))$.
+		
+		\qquad The function is onto, $f((x,0),(1,0))=x$ where $x$ can be any real number.
+		
+		(e) $f:\mathbb{R}^2\times\mathbb{R}^2\to\mathbb{R}, f((x,y),(u,v))=\sqrt{(x-u)^2+(y-v)^2}$
+		
+		\qquad The function is not one-to-one because $f((1,0),(0,0))=f((0,1),(0,0))=1$, 
+		
+		\qquad but $((1,0),(0,0))\neq((0,1),(0,0))$.
+		
+		\qquad The function is not onto because $f$ is never negative. The range is $[0,\infty)$.
+		
+		\newpage
+		
+		(f) Let $X$ be a nonempty set. Define $f:\mathscr{P}(X)\to\mathscr{P}(X)$ by $f(A)=X\setminus A$. 
+		
+		\qquad The function is not one-to-one because if $A,B\not\subseteq X$, then $f(A)=f(B)=X$, 
+		
+		\qquad but $A$ isn't necessarily equivalent to $B$.
+		
+		\qquad The function is onto because any subset (hence any element of the power set) 
+		
+		\qquad of $X$ can be generated.
+		
+		\item Define $f:\mathbb{R}\to\mathbb{R}$ by
+		
+		\[ f(x)=\begin{cases}
+		x^2-4x+7, &x\leq1,\\
+		5-x^2, &x>1.
+		\end{cases}
+		\]
+		
+		\noindent This function is well defined, prove it is a bijection.
+		
+		\begin{proof}
+			First we will show that the function is one-to-one. Let $f(x_1)=f(x_2)$, if $x_1,x_2\leq1$, then $x_1^2-4x_1+7=x_2^2-4x_2+7$, so $x_1=x_2$. If $x_1,x_2>1$, then $5-x_1^2=5-x_2^2$. Hence $x_1=x_2$. The last case we will show the contrapositive. If $x_1\leq1$ and $x_2>1$. Then $x_1\neq x_2$, then $f(x_1)=x_1^2-4x_1+7$ and $f(x_2)=5-x_2^2$, so $f(x_1)\neq f(x_2)$.
+			
+			Next we will show the function is onto. Then $\text{ran}(f)=\mathbb{R}$. If $y\in \text{ran}(f)$. Then $y\in \mathbb{R}$. Now let $y\in\mathbb{R}$. If $y\geq4$, then we can have $x=2+\sqrt{y-3}$. If $y<4$ then we can have $x=\sqrt{|5-y|}$. So $x\in\mathbb{R}=\text{dom}(f)$ and $f(x)=y$ when $y\geq4$ and $f(x)=y$ when $y<4$.
+		\end{proof}
+	
+		\item Define $f:\mathbb{R}\to(-1,1)$ by
+		
+		\[
+			f(x)=\frac{x}{1+|x|}
+		\]
+		Prove $f$ is bijective.
+		
+		\begin{proof}
+			First we need to prove that $f$ is one-to-one. If $f(a_1)=f(a_2)$, then
+			\[
+			\frac{a_1}{1+|a_1|}=\frac{a_2}{1+|a_2|}
+			\]
+			so $a_1=a_2$. Hence $f$ is one-to-one.
+			
+			Now we need to prove $f$ is onto. So we must prove $\text{ran}(f)=(-1,1)$. First we will start with $y\in\text{ran}(f)$. Now let
+			\[
+			x=\frac{y}{1+y}
+			\]
+			$x$ can be any real number as $y$ varies from $(-1,1)$ and $f(x)=y$.
+			
+			Since $f$ was shown to be one-to-one and onto it is bijective.
+		\end{proof}
+		
+		\end{enumerate}
+
+\end{document}

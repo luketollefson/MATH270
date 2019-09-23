@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\setlist{parsep=0pt,listparindent=\parindent}
+\usepackage[mathscr]{euscript}
+\let\euscr\mathscr \let\mathscr\relax% just so we can load this and rsfs
+\usepackage[scr]{rsfso}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+\usepackage{pgfplots}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+	
+	\title{\Large Homework \#11 MATH270}
+	\author{Luke Tollefson}
+	\date{Friday, May 3rd}
+	
+	\maketitle
+	\begin{enumerate}
+		\item Suppose that $A\subseteq B\subseteq C$, $A\approx C$, and $C$ is countable. Is $A\approx B$?
+		
+		\begin{proof}
+			Yes. If $C$ is finite, then $|A|\leq |B|\leq |C|$. But since $A\approx C$, then $|A|=|C|$. This would force $B$ to be equal cardinality as $A$ and $C$, hence $|A|=|B|$, or $A\approx B$.
+			
+			If $C$ were to be countable infinite then $C\approx \mathbb{N}$. We also know $A\approx C$, which lets us conclude $A\approx \mathbb{N}$. Since $A\subseteq B\subseteq C$, $A\approx C$, we know $|A|\leq |B|\leq |C|$. From the just previous conclusion we find $|\mathbb{N}|\leq |B|\leq |\mathbb{N}|$. This forces $B$ to have the same cardinality as $\mathbb{N}$, hence $B\approx \mathbb{N}$. Therefore $A\approx B$.
+		\end{proof}
+	
+		\item Prove that set $A$ is uncountable if there is an injective function $f:(0,1)\to A$.
+		
+		\begin{proof}
+			Since there is an injective function $f:(0,1)\to A$, we know the cardinalty of $(0,1)$ is less than or equal to $A$. Hence, since $(0,1)$ is uncountable (because it is an interval over $\mathbb{R}$), $A$ must be uncountable.
+		\end{proof}
+	
+		\item Let $X$ and $Y$ be two nonempty finite sets. Let $F(X,Y)$ denote the set of all function from $X$ to $Y$. Is this set finite, countably infinite, or uncountable?
+		
+		\begin{proof}
+			There are a finite number of functions. For every element in $X$, it can be sent to any element in $Y$. Hence, every element in $X$ has $|Y|$ possibles. Therefore there would be $|Y|^{|X|}$ potential functions. This number would be finite as both $X$ and $Y$ are finite.
+		\end{proof}
+	
+		\item Prove that the set of all irrational numbers $\mathbb{R}\setminus \mathbb{Q}$ is uncountable.
+		
+		\begin{proof}
+			Assume that $\mathbb{R}\setminus \mathbb{Q}$ is countable. We know $\mathbb{Q}$ is countable. This would imply $(\mathbb{R}\setminus\mathbb{Q})\cup \mathbb{Q}=\mathbb{R}$ is countable. This is false however, so $\mathbb{R}\setminus \mathbb{Q}$ must be uncountable.
+		\end{proof}
+	
+		\item Prove that if $A\approx B$ then $\mathscr{P}(A)\approx \mathscr{P}(B)$.
+		
+		\begin{proof}
+			Since $A\approx B$, then $|A|=|B|$. Therefore have an bijective function $f:A\to B$, where $f(a)=b$. We can construct another function $F:\mathscr{P}(A)\to \mathscr{P}(B)$, where $F(A_0)=\{f(a):a\in A_0 \}$. We can show function $F$ is injective. If $F(A_1)=F(A_2)$, then $\{f(a_1):a_1\in A_1\}=\{f(a_2):a_2\in A_2\}$. Since $f$ is a bijection, that would imply $\{a_1:a_1\in A_1 \}=\{a_2:a_2\in A_2 \}$, or $A_1=A_2$. This shows that $F$ is injective, since the same argument could be shown for $F:\mathscr{P}(B)\to\mathscr{P}(A)$ we have an injection both ways. Hence $\mathscr{P}(A)\approx \mathscr{P}(B)$.
+		\end{proof}
+	
+	$\Phi=\vec{E}  	\cdot \vec{A}$
+	\end{enumerate}
+	
+\end{document}

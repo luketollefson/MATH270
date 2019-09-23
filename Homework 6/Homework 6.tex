@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\setlist{parsep=0pt,listparindent=\parindent}
+
+\begin{document}
+	
+	\title{\Large Homework \#6 MATH270}
+	\author{Luke Tollefson}
+	\date{Wednesday, March 6th}
+	
+	\maketitle
+	
+	
+	\begin{enumerate}
+		\item (a) Prove $A\times (B\cup C)=(A\times B)\cup (A\times C)$.
+		\begin{proof}
+			Let $x\in A\times (B\cup C)$, then $x=(y,z)$, where $y\in A$ and $z\in B\cup C$. In other words, $y\in A$ and $z\in B$, or the case $y\in A$ and $z\in C$. Thus $x\in A\times B$ or $x\in A\times C$. Therefore $x\in (A\times B)\cup (A\times C)$.
+			
+			To prove containment in the other direction, let $x\in (A\times B)\cup (A\times C)$. Therefore $x\in A\times B$ or $x\in B\times C$. Then $x=(y,z)$, where $y\in A$ and $z\in B$ or the case $y\in A$ and $z\in B$. Hence $y\in A$ and $z\in B\cup C$. Therefore $x\in A\times (B\cup C)$.
+			
+			Since containment was shown in both directions, equality is proved.
+		\end{proof}
+	
+		\noindent (b) Prove $A\times (B\cap C)=(A\times B)\cap (A\times C)$
+		
+		\begin{proof}
+			Let $x\in A\times(B\cap C)$. Then $x=(y,z)$ where $y\in A$ and $z\in B\cap C$. Hence $z\in B$ and $z\in C$. So it's the case $y\in A$ and $z\in B$, and the case $y\in A$ and $z\in C$. Therefore $x\in (A\times B)\cap (A\times C)$.
+			
+			Now let $x\in (A\times B)\cap (A\times C)$. So $x=(y,z)$ where the case $y\in A$ and $z\in B$ and the case $y\in A$ and $z\in C$. Hence, $z\in B\cap C$. Since $y\in A$ and $z\in B\cap C$, $x\in A\times (B\cap C)$.
+			
+			Containment was proved in both directions showing equality.
+		\end{proof}
+	
+		\item On the paper stapled.
+		
+		\item Let $X=\{1,2,3,4,5\}$. (a) define an equivalence relation. (b) define a reflexive, but not symmetric nor transitive relation. (c) define a symmetric, but not reflexive nor transitive relation. (d) define a transative, but not reflexive nor symmetric relation.
+		
+		\noindent (a) $x\sim y\iff T$
+		
+		\noindent (b) $x\sim y\iff x-y$ is odd and $x-y\geq 0$
+		
+		\noindent (c) $x\sim y\iff x\neq y$
+		
+		\noindent (d) $x\sim y\iff x\mid y$ and $x\neq y$
+		
+		\newpage
+		
+		\item Define a relation $\mathbb{R}$ as follows: $x\sim y$ if and only if $x^2-y^2\in \mathbb{Z}$. Prove its and equivalence relation and give five different real numbers in the equivalence class $E_{\sqrt{2}}$.
+		
+		\begin{proof}
+			To prove that it is an equivalence relation we will show it is reflexive, symmetric, and transitive.
+			
+			Let $x\in \mathbb{R}$. Then $x^2-x^2=0\in \mathbb{Z}$. Hence $x\sim x$.
+			
+			If $x\sim y$, then $x^2-y^2\in \mathbb{Z}$. Negating yields another integer $y^2-x^2$. Since $y^2-x^2\in \mathbb{Z}$, $y\sim x$.
+			
+			If $x\sim y$ and $y\sim z$, then $x^2-y^2\in\mathbb{Z}$ and $y^2-z^2\in\mathbb{Z}$. Adding $x^2-y^2$ and $y^2-z^2$ yields another integer $x^2-z^2$. So $x^2-z^2\in\mathbb{Z}$, therefore $x\sim z$.
+			
+			Hence, the relation is indeed equivalent.
+		\end{proof}
+	
+		Five real numbers in $E_{\sqrt{2}}$ include 0, 1, 2, 3, and 4.
+	
+	\end{enumerate}
+
+
+\end{document}
